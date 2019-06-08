@@ -21,7 +21,7 @@ Expose the following end-points
 * /names - return using the JSON format all of the countries alphabetized by name
 * /economy - return using the JSON format all of the countries sorted from most to least GDP  
   * for sorting you might have to type cast so    
-  ```.sort((c1, c2) -> (int)(c2.getGDP() - c2.getGDP()))``` 
+  ```.sort((c1, c2) -> (int)(c2.getGDP() - c1.getGDP()))``` 
 * /country/{id} - return using the JSON format a single country and GDP based off of its id number
 * /country/stats/median - return using the JSON the country and its GDP with the median GDP. For odd number list, return the the country in the middle. For even number list you may return either one of the countries found in the middle.
 
