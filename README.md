@@ -19,7 +19,9 @@ The top 100 economies in the world are provided below. The data includes the cou
 
 Expose the following end-points
 * /names - return using the JSON format all of the countries alphabetized by name
-* /economy - return using the JSON format all of the countries sorted from most to least GDP
+* /economy - return using the JSON format all of the countries sorted from most to least GDP  
+  * for sorting you might have to type cast so    
+  ```.sort((c1, c2) -> (int)(c2.getGDP() - c2.getGDP()))``` 
 * /country/{id} - return using the JSON format a single country and GDP based off of its id number
 * /country/stats/median - return using the JSON the country and its GDP with the median GDP. For odd number list, return the the country in the middle. For even number list you may return either one of the countries found in the middle.
 
@@ -57,7 +59,8 @@ Create the server side html pages
 
 ## the data
 
-When reading in the GDP, best practice would be to convert it to a long datatype using something like Long.parseLong(GDP)
+When reading in the GDP, best practice would be to convert it to a long datatype using something like  
+```Long.parseLong(GDP)```
 
 gdpList.add(new GDP("United States","20513000"));  
 gdpList.add(new GDP("China","13457267"));  
