@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,8 +66,18 @@ public class GdpController
 	{
 		ArrayList<GDP> tempList = GdpApplication.ourGdpList.gdpList;
 		int arrayMiddle = tempList.size() / 2;
-		System.out.println(arrayMiddle);
 		tempList.sort((c1, c2) -> (Integer.parseInt(c2.getGdp()) - Integer.parseInt(c1.getGdp())));
 		return new ResponseEntity<>(tempList.get(arrayMiddle), HttpStatus.OK);
+	}
+
+	@GetMapping(value = "/economy/table")
+	public ModelAndView getEconomyTable()
+	{
+		ModelAndView mav = new ModelAndView();
+		GdpApplication.ourGdpList.gdpList.sort((c1, c2) -> (Integer.parseInt(c2.getGdp()) - Integer.parseInt(c1.getGdp())));
+		mav.setViewName("gdp");
+		mav.addObject("countryList", GdpApplication.ourGdpList.gdpList);
+		logger.info("/economy/table accessed at " + new Date());
+		return mav;
 	}
 }
