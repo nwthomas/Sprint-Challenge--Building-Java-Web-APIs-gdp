@@ -67,6 +67,7 @@ public class GdpController
 		ArrayList<GDP> tempList = GdpApplication.ourGdpList.gdpList;
 		int arrayMiddle = tempList.size() / 2;
 		tempList.sort((c1, c2) -> (Integer.parseInt(c2.getGdp()) - Integer.parseInt(c1.getGdp())));
+		logger.info("/country/stats/median accessed at " + new Date());
 		return new ResponseEntity<>(tempList.get(arrayMiddle), HttpStatus.OK);
 	}
 
