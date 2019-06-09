@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class GdpApplication
 {
+	public static GdpList ourGdpList;
 
 	public static void main(String[] args)
 	{
