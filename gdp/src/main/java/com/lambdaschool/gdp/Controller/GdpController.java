@@ -24,12 +24,21 @@ public class GdpController
 	@Autowired
 	RabbitTemplate rt;
 
-	@GetMapping(value = "/countries", produces = {"application/json"})
+	@GetMapping(value = "/names", produces = {"application/json"})
 	public ResponseEntity<?> getAllCountriesByName()
 	{
 		ArrayList<GDP> tempList = GdpApplication.ourGdpList.gdpList;
 		tempList.sort((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
-		logger.info("/api/gdp/countries accessed at " + new Date());
+		logger.info("/api/gdp/names accessed at " + new Date());
+		return new ResponseEntity<>(tempList, HttpStatus.OK);
+	}
+
+	@GetMapping(value = "economy", produces = {"application/json"})
+	public ResponseEntity<?> getAllCountriesByGdp()
+	{
+		ArrayList<GDP> tempList = GdpApplication.ourGdpList.gdpList;
+		tempList.sort((c1, c2) -> (Integer.parseInt(c2.getGdp()) - Integer.parseInt(c1.getGdp())));
+		logger.info("/api/gdp/economy accessed at " + new Date());
 		return new ResponseEntity<>(tempList, HttpStatus.OK);
 	}
 }
