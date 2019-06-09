@@ -59,4 +59,14 @@ public class GdpController
 			return new ResponseEntity<>(rtnCountry, HttpStatus.OK);
 		}
 	}
+
+	@GetMapping(value = "/country/stats/median", produces = {"application/json"})
+	public ResponseEntity<?> getMedianCountryGdp()
+	{
+		ArrayList<GDP> tempList = GdpApplication.ourGdpList.gdpList;
+		int arrayMiddle = tempList.size() / 2;
+		System.out.println(arrayMiddle);
+		tempList.sort((c1, c2) -> (Integer.parseInt(c2.getGdp()) - Integer.parseInt(c1.getGdp())));
+		return new ResponseEntity<>(tempList.get(arrayMiddle), HttpStatus.OK);
+	}
 }
