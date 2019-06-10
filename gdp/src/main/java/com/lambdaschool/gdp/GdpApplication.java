@@ -17,8 +17,8 @@ import org.springframework.amqp.core.Queue;
 public class GdpApplication
 {
 	public static GdpList ourGdpList;
-	private static final String EXCHANGE_NAME = "GDPServer";
-	private static final String QUEUE_GDP = "GDPPriorityQueue";
+	public static final String EXCHANGE_NAME = "GDPServer";
+	public static final String QUEUE_GDP = "GDPPriorityQueue";
 
 	public static void main(String[] args)
 	{
