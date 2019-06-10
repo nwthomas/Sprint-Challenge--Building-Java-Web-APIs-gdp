@@ -33,8 +33,8 @@ public class GdpController
 	{
 		ArrayList<GDP> tempList = GdpApplication.ourGdpList.gdpList;
 		tempList.sort((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
-		MessageDetail message = new MessageDetail("/gdp/names accessed", 5, false, new Date() + "", "");
-		rt.convertAndSend(GdpApplication.QUEUE_GDP, message);
+//		MessageDetail message = new MessageDetail("/gdp/names accessed", 5, false, new Date() + "", "");
+//		rt.convertAndSend(GdpApplication.QUEUE_GDP, message);
 		logger.info("/api/gdp/names accessed at " + new Date());
 		return new ResponseEntity<>(tempList, HttpStatus.OK);
 	}
@@ -44,8 +44,8 @@ public class GdpController
 	{
 		ArrayList<GDP> tempList = GdpApplication.ourGdpList.gdpList;
 		tempList.sort((c1, c2) -> (Integer.parseInt(c2.getGdp()) - Integer.parseInt(c1.getGdp())));
-		MessageDetail message = new MessageDetail("/gdp/economy accessed", 5, false, new Date() + "", "");
-		rt.convertAndSend(GdpApplication.QUEUE_GDP, message);
+//		MessageDetail message = new MessageDetail("/gdp/economy accessed", 5, false, new Date() + "", "");
+//		rt.convertAndSend(GdpApplication.QUEUE_GDP, message);
 		logger.info("/api/gdp/economy accessed at " + new Date());
 		return new ResponseEntity<>(tempList, HttpStatus.OK);
 	}
@@ -61,8 +61,8 @@ public class GdpController
 		}
 		else
 		{
-			MessageDetail message = new MessageDetail("/gdp/country/{id} accessed", 5, false, new Date() + "", id + "");
-			rt.convertAndSend(GdpApplication.QUEUE_GDP, message);
+//			MessageDetail message = new MessageDetail("/gdp/country/{id} accessed", 5, false, new Date() + "", id + "");
+//			rt.convertAndSend(GdpApplication.QUEUE_GDP, message);
 			logger.trace("/api/gdp/country/{id} accessed with id: " + id + " at " + new Date());
 			return new ResponseEntity<>(rtnCountry, HttpStatus.OK);
 		}
@@ -74,8 +74,8 @@ public class GdpController
 		ArrayList<GDP> tempList = GdpApplication.ourGdpList.gdpList;
 		int arrayMiddle = tempList.size() / 2;
 		tempList.sort((c1, c2) -> (Integer.parseInt(c2.getGdp()) - Integer.parseInt(c1.getGdp())));
-		MessageDetail message = new MessageDetail("/gdp/country/stats/median accessed", 5, false, new Date() + "", "");
-		rt.convertAndSend(GdpApplication.QUEUE_GDP, message);
+//		MessageDetail message = new MessageDetail("/gdp/country/stats/median accessed", 5, false, new Date() + "", "");
+//		rt.convertAndSend(GdpApplication.QUEUE_GDP, message);
 		logger.info("/country/stats/median accessed at " + new Date());
 		return new ResponseEntity<>(tempList.get(arrayMiddle), HttpStatus.OK);
 	}
